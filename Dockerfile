@@ -1,9 +1,15 @@
+ARG PORTAINER_AGENT_VERSION="1.5.1"
+
 FROM homecentr/base:1.0.0 as base
-FROM portainer/agent:1.5.1 as agent
+FROM portainer/agent:$PORTAINER_AGENT_VERSION as agent
 
 FROM alpine:3.11.3
 
+ARG PORTAINER_AGENT_VERSION
 ENV PORTAINER_AGENT_ARGS=""
+
+LABEL maintainer="Lukas Holota <me@lholota.com>"
+LABEL org.homecentr.dependency-version=$PORTAINER_AGENT_VERSION
 
 RUN apk add --no-cache \
   shadow=4.7-r1 \
