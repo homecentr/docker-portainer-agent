@@ -1,2 +1,2 @@
-# HomeCentr - $$IMAGE_NAME$$
+# HomeCentr - portainer-agent
 Template repository for Docker container repositories
