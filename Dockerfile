@@ -24,6 +24,9 @@ COPY --from=agent / /
 # Copy S6 overlay configuration
 COPY ./fs/ /
 
+RUN chmod a+x /usr/sbin/healthcheck && \
+    chmod a+x /usr/sbin/wait-for-signal
+
 HEALTHCHECK --interval=10s --timeout=5s --retries=3 CMD healthcheck
 
 WORKDIR /app
