@@ -24,7 +24,7 @@ COPY --from=agent / /
 # Copy S6 overlay configuration
 COPY ./fs/ /
 
-HEALTHCHECK --interval=10s --timeout=5s --start-period=1ms --retries=3 CMD healthcheck
+HEALTHCHECK --interval=10s --timeout=5s --retries=3 CMD healthcheck
 
 WORKDIR /app
 
