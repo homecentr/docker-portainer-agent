@@ -1,0 +1,22 @@
+#!/usr/bin/env ash
+
+START_TIME=`date +%s`
+WAIT_TIMEOUT=10
+
+echo "Waiting for first healthcheck execution (max $WAIT_TIMEOUT seconds)..."
+
+while [ ! -f "/tmp/healthcheck-signal" ];
+do
+  sleep 1
+
+  ELAPSED_TIME=`expr \`date +%s\` - $START_TIME`
+
+  if [ $ELAPSED_TIME -gt $WAIT_TIMEOUT ]
+  then
+    echo "Signal from healthcheck not received in time, failing the execution..."
+    exit 20
+  fi
+done
+
+echo "Signal from healthcheck received"
+exit 0
