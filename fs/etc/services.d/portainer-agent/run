@@ -2,4 +2,10 @@
 
 s6-setuidgid nonroot
 
+# Wait for signal file
+
+wait-for-signal || exit 10
+
+echo "Start Portainer agent..."
+
 exec /app/agent $PORTAINER_AGENT_ARGS

@@ -12,8 +12,8 @@ LABEL maintainer="Lukas Holota <me@lholota.com>"
 LABEL org.homecentr.dependency-version=$PORTAINER_AGENT_VERSION
 
 RUN apk add --no-cache \
-  shadow=4.7-r1 \
-  curl=7.67.0-r0
+    shadow=4.7-r1 \
+    curl=7.67.0-r0
 
 # Copy S6 overlay
 COPY --from=base / /
@@ -21,10 +21,15 @@ COPY --from=base / /
 # Copy Portainer agent binaries
 COPY --from=agent / /
 
-# Copy S6 overlay configuration & scripts
+# Copy S6 overlay configuration
 COPY ./fs/ /
 
-HEALTHCHECK --interval=10s --timeout=10s --start-period=5s --retries=3 CMD [ "curl", "-k", "https://127.0.0.1:9001/ping" ]
+RUN chmod a+x /usr/sbin/healthcheck && \
+    chmod a+x /usr/sbin/wait-for-signal
+
+HEALTHCHECK --interval=10s --timeout=5s --retries=3 CMD healthcheck
+
+WORKDIR /app
 
 EXPOSE 9001
 

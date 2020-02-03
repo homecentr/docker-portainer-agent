@@ -1,0 +1,7 @@
+#!/usr/bin/env ash
+
+if [ -f "/tmp/healthcheck-signal" ]; then
+  curl -k --fail http://127.0.0.1:9001/ping || exit 1
+else 
+  touch /tmp/healthcheck-signal
+fi

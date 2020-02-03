@@ -25,7 +25,7 @@ public abstract class ContainerTestBase {
 
         _container = new GenericContainer<>(dockerImageTag)
                 .withFileSystemBind("//var/run/docker.sock", "/var/run/docker.sock")
-                .waitingFor(Wait.forHealthcheck());
+                .waitingFor(Wait.forLogMessage(".*port: 9001\\].*", 1));
 
         _container.start();
         _container.followOutput(new Slf4jLogConsumer(logger));
