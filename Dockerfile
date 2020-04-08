@@ -1,7 +1,7 @@
 FROM homecentr/base:1.1.0 as base
 FROM portainer/agent:1.5.1 as agent
 
-FROM alpine:3.11.3
+FROM alpine:3.11.5
 
 ARG PORTAINER_AGENT_VERSION
 ENV PORTAINER_AGENT_ARGS=""
