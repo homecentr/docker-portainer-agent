@@ -27,6 +27,9 @@ jobs:
       - name: Verify Dockerfile with Hadolint
         uses: brpaz/hadolint-action@master
 
+      - name: "Check socket permissions"
+        run: "ls -l /var/run/docker.sock"
+
       - name: "Build Docker image"
         #if: env.RELEASE_VERSION != ''
         run: |
@@ -52,7 +55,7 @@ jobs:
 
       - name: "Tag image as latest - Echo"
         #if: env.RELEASE_VERSION != ''
-        run: "echo \"tag ${{ env.IMAGE_NAME }}:${{ env.RELEASE_VERSION }} ${{ env.IMAGE_NAME }}:latest\""
+        run: "ls -l /var/run/docker.sock && echo \"tag ${{ env.IMAGE_NAME }}:${{ env.RELEASE_VERSION }} ${{ env.IMAGE_NAME }}:latest\""
 
       - name: "Tag image as latest"
         #if: env.RELEASE_VERSION != ''
