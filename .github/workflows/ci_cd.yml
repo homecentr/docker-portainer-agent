@@ -52,11 +52,11 @@ jobs:
 
       - name: "Tag image as latest - Echo"
         #if: env.RELEASE_VERSION != ''
-        run: "echo \"tag $IMAGE_NAME:$RELEASE_VERSION $IMAGE_NAME:latest\""
+        run: "echo \"tag ${{ env.IMAGE_NAME }}:${{ env.RELEASE_VERSION }} ${{ env.IMAGE_NAME }}:latest\""
 
       - name: "Tag image as latest"
         #if: env.RELEASE_VERSION != ''
-        run: "docker tag $IMAGE_NAME:$RELEASE_VERSION $IMAGE_NAME:latest"
+        run: "docker tag ${{ env.IMAGE_NAME }}:${{ env.RELEASE_VERSION }} ${{ env.IMAGE_NAME }}:latest"
 
       # - name: "Log into Docker Hub"
       #   if: env.RELEASE_VERSION != ''
