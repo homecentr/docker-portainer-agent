@@ -1,8 +1,8 @@
 name: CI/CD on master
 on:
   push:
-    branches:
-      - master
+    # branches:
+    #   - master
 
 env:
   IMAGE_NAME: "homecentr/portainer-agent"
@@ -53,27 +53,27 @@ jobs:
         if: env.RELEASE_VERSION != ''
         run: "docker tag $IMAGE_NAME:$RELEASE_VERSION $IMAGE_NAME:latest"
 
-      - name: "Log into Docker Hub"
-        if: env.RELEASE_VERSION != ''
-        run: "echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin"
+      # - name: "Log into Docker Hub"
+      #   if: env.RELEASE_VERSION != ''
+      #   run: "echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin"
 
-      - name: "Push versioned image"
-        if: env.RELEASE_VERSION != ''
-        run: "docker push $IMAGE_NAME:$RELEASE_VERSION"
+      # - name: "Push versioned image"
+      #   if: env.RELEASE_VERSION != ''
+      #   run: "docker push $IMAGE_NAME:$RELEASE_VERSION"
 
-      - name: "Push latest image"
-        if: env.RELEASE_VERSION != ''
-        run: "docker push $IMAGE_NAME:latest"
+      # - name: "Push latest image"
+      #   if: env.RELEASE_VERSION != ''
+      #   run: "docker push $IMAGE_NAME:latest"
 
-      - name: "Update Docker Hub description"
-        if: env.RELEASE_VERSION != ''
-        uses: peter-evans/dockerhub-description@v2.1.0
-        env:
-          DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
-          DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
-          DOCKERHUB_REPOSITORY: ${{ env.IMAGE_NAME }}
+      # - name: "Update Docker Hub description"
+      #   if: env.RELEASE_VERSION != ''
+      #   uses: peter-evans/dockerhub-description@v2.1.0
+      #   env:
+      #     DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+      #     DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+      #     DOCKERHUB_REPOSITORY: ${{ env.IMAGE_NAME }}
 
-      - name: "Notify Microbadger to refresh metadata"
-        uses: wei/curl@master
-        with:
-          args: -X POST ${{ secrets.MICROBADGER_NOTIFY_URL }}
+      # - name: "Notify Microbadger to refresh metadata"
+      #   uses: wei/curl@master
+      #   with:
+      #     args: -X POST ${{ secrets.MICROBADGER_NOTIFY_URL }}

@@ -29,9 +29,6 @@ jobs:
       - name: Build Docker image
         run: docker build . -t ${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.docker_tag }}
 
-      - name: "Tag image as latest"
-        run: "docker tag $IMAGE_NAME:${{ steps.vars.outputs.docker_tag }} $IMAGE_NAME:latest"
-
       - name: Test Docker image
         run: cd tests && gradle test --info -Dimage_tag=${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.docker_tag }}
 
