@@ -1,11 +1,10 @@
-#!/usr/bin/with-contenv sh
-
-s6-setuidgid nonroot
-
-# Wait for signal file
+#!/usr/bin/with-contenv ash
 
 wait-for-signal || exit 10
 
-echo "Start Portainer agent..."
+# The executable should be running from the /app as defined in the original Dockerfile (WORKDIR directive is not honored by S6)
+cd /app
 
-exec /app/agent $PORTAINER_AGENT_ARGS
+echo "Starting  Portainer agent..."
+
+exec s6-setuidgid "$PUID:$PGID" ./agent $PORTAINER_AGENT_ARGS
