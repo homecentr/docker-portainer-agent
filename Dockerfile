@@ -22,9 +22,8 @@ COPY ./fs/ /
 RUN chmod a+x /usr/sbin/healthcheck && \
     chmod a+x /usr/sbin/wait-for-signal
 
-HEALTHCHECK --interval=10s --timeout=5s --start-period=1ms --retries=3 CMD healthcheck
-
-# WORKDIR /app
+# start-period default is zero, when declared explicitly, hadolint check fails so relying on default value
+HEALTHCHECK --interval=10s --timeout=5s --retries=3 CMD healthcheck
 
 EXPOSE 9001
 
