@@ -6,6 +6,7 @@ on:
 
 env:
   IMAGE_NAME: "homecentr/portainer-agent"
+  RELEASE_VERSION: "1.2.0"
 
 jobs:
   build:
@@ -18,16 +19,16 @@ jobs:
         with:
           java-version: 11
 
-      - name: "Determine release version"
-        uses: codfish/semantic-release-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # - name: "Determine release version"
+      #   uses: codfish/semantic-release-action@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Verify Dockerfile with Hadolint
         uses: brpaz/hadolint-action@master
 
       - name: "Build Docker image"
-        if: env.RELEASE_VERSION != ''
+        #if: env.RELEASE_VERSION != ''
         run: |
           docker build . -t "$IMAGE_NAME:$RELEASE_VERSION" \
               --label "org.label-schema.schema-version=1.0" \
@@ -39,18 +40,18 @@ jobs:
               --label "org.label-schema.build-date=$(date '+%F %T')"
 
       - name: Test Docker image
-        if: env.RELEASE_VERSION != ''
+        #if: env.RELEASE_VERSION != ''
         run: cd tests && gradle test -Dimage_tag=${{ env.IMAGE_NAME }}:${{ env.RELEASE_VERSION }}
       
       - name: Scan with Phonito Security
-        if: env.RELEASE_VERSION != ''
+        #if: env.RELEASE_VERSION != ''
         uses: phonito/phonito-scanner-action@master
         with:
           image: ${{ env.IMAGE_NAME }}:${{ env.RELEASE_VERSION }}
           phonito-token: '${{ secrets.PHONITO_TOKEN }}'
 
       - name: "Tag image as latest"
-        if: env.RELEASE_VERSION != ''
+        #if: env.RELEASE_VERSION != ''
         run: "docker tag $IMAGE_NAME:$RELEASE_VERSION $IMAGE_NAME:latest"
 
       # - name: "Log into Docker Hub"
