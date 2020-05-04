@@ -50,6 +50,10 @@ jobs:
           image: ${{ env.IMAGE_NAME }}:${{ env.RELEASE_VERSION }}
           phonito-token: '${{ secrets.PHONITO_TOKEN }}'
 
+      - name: "Tag image as latest - Echo"
+        #if: env.RELEASE_VERSION != ''
+        run: "echo \"tag $IMAGE_NAME:$RELEASE_VERSION $IMAGE_NAME:latest\""
+
       - name: "Tag image as latest"
         #if: env.RELEASE_VERSION != ''
         run: "docker tag $IMAGE_NAME:$RELEASE_VERSION $IMAGE_NAME:latest"
