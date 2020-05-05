@@ -18,6 +18,9 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 11
+
+      - name: Debug
+        run: ls -l /var/run/docker.sock && ls -ln /var/run/docker.sock
       
       - name: Set tag var
         id: vars
