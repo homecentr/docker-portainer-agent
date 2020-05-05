@@ -32,6 +32,9 @@ jobs:
       - name: Build Docker image
         run: docker build . -t ${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.docker_tag }}
 
+      - name: Initialize swarm # Tests require overlay network
+        run: docker swarm init
+
       - name: Test Docker image
         run: cd tests && gradle test --info -Dimage_tag=${{ env.IMAGE_NAME }}:${{ steps.vars.outputs.docker_tag }}
 
