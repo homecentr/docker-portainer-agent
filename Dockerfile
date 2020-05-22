@@ -1,6 +1,6 @@
 FROM portainer/agent:1.5.1 as agent
 
-FROM homecentr/base:2.0.0-alpine
+FROM homecentr/base:2.3.0-alpine
 
 ENV PORTAINER_AGENT_ARGS=""
 ENV FIRST_HEALTHCHECK_TIMEOUT=20
