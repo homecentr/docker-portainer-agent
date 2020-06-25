@@ -1,8 +1,6 @@
-[![Project status](https://img.shields.io/badge/Project%20status-stable%20%26%20actively%20maintaned-green.svg)](https://github.com/homecentr/docker-portainer-agent/graphs/commit-activity) 
-[![](https://img.shields.io/github/issues-raw/homecentr/docker-portainer-agent/bug?label=open%20bugs)](https://github.com/homecentr/docker-portainer-agent/labels/bug) 
-[![](https://images.microbadger.com/badges/version/homecentr/portainer-agent.svg)](https://hub.docker.com/repository/docker/homecentr/portainer-agent)
-[![](https://img.shields.io/docker/pulls/homecentr/portainer-agent.svg)](https://hub.docker.com/repository/docker/homecentr/portainer-agent) 
-[![](https://img.shields.io/docker/image-size/homecentr/portainer-agent/latest)](https://hub.docker.com/repository/docker/homecentr/portainer-agent)
+[![Project status](https://badgen.net/badge/project%20status/stable%20%26%20actively%20maintaned?color=green)](https://github.com/homecentr/docker-portainer-agent/graphs/commit-activity) [![](https://badgen.net/github/label-issues/homecentr/docker-portainer-agent/bug?label=open%20bugs&color=green)](https://github.com/homecentr/docker-portainer-agent/labels/bug) [![](https://badgen.net/github/release/homecentr/docker-portainer-agent)](https://hub.docker.com/repository/docker/homecentr/portainer-agent)
+[![](https://badgen.net/docker/pulls/homecentr/portainer-agent)](https://hub.docker.com/repository/docker/homecentr/portainer-agent) 
+[![](https://badgen.net/docker/size/homecentr/portainer-agent)](https://hub.docker.com/repository/docker/homecentr/portainer-agent)
 
 ![CI/CD on master](https://github.com/homecentr/docker-portainer-agent/workflows/CI/CD%20on%20master/badge.svg)
 ![Regular Docker image vulnerability scan](https://github.com/homecentr/docker-portainer-agent/workflows/Regular%20Docker%20image%20vulnerability%20scan/badge.svg)
