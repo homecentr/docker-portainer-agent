@@ -9,7 +9,7 @@ LABEL maintainer="Lukas Holota <me@lholota.com>"
 LABEL io.homecentr.dependency-version=1.5.1
 
 RUN apk add --no-cache \
-    curl=7.69.1-r0
+    curl=7.77.0-r0	
 
 # Copy Portainer agent binaries
 COPY --from=agent / /
