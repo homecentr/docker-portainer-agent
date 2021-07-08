@@ -3,7 +3,6 @@
 [![](https://badgen.net/docker/size/homecentr/portainer-agent)](https://hub.docker.com/repository/docker/homecentr/portainer-agent)
 
 ![CI/CD on master](https://github.com/homecentr/docker-portainer-agent/workflows/CI/CD%20on%20master/badge.svg)
-![Regular Docker image vulnerability scan](https://github.com/homecentr/docker-portainer-agent/workflows/Regular%20Docker%20image%20vulnerability%20scan/badge.svg)
 
 
 # HomeCentr - Portainer agent
@@ -67,19 +66,3 @@ The container supports privilege drop. Even though the container starts as root,
 :warning: Do not change the container user directly using the `user` Docker compose property or using the `--user` argument. This would break the privilege drop logic.
 
 :bulb: To grant a user the permission to read Docker socket, you can set the PGID to the ID of the docker group on host.
-
-
-
-
-
-
-
-
-
-
-
-
-# HomeCentr - portainer-agent
-
-Note: PUID or PGID must give access to docker.sock
-
