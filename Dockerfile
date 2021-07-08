@@ -1,6 +1,6 @@
 FROM portainer/agent:1.6.0 as agent
 
-FROM homecentr/base:2.4.3-alpine
+FROM homecentr/base:3.0.0-alpine
 
 ENV PORTAINER_AGENT_ARGS=""
 ENV FIRST_HEALTHCHECK_TIMEOUT=20
@@ -9,7 +9,7 @@ LABEL maintainer="Lukas Holota <me@lholota.com>"
 LABEL io.homecentr.dependency-version=1.5.1
 
 RUN apk add --no-cache \
-    curl=7.77.0-r0	
+    curl=7.77.0-r1
 
 # Copy Portainer agent binaries
 COPY --from=agent / /
