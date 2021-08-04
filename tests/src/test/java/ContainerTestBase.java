@@ -34,6 +34,7 @@ public abstract class ContainerTestBase {
                 .withNetworkAliases("agent")
                 .withNetwork(network)
                 .withFileSystemBind("//var/run/docker.sock", "/var/run/docker.sock")
+                .withExposedPorts(9001)
                 .waitingFor(Wait.forLogMessage(".*http.*port: 9001\\].*", 1));
 
         _container.start();
