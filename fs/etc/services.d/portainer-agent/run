@@ -7,4 +7,4 @@ cd /app
 
 echo "Starting  Portainer agent..."
 
-exec s6-setuidgid "$PUID:$PGID" ./agent $PORTAINER_AGENT_ARGS
+exec runas ./agent $PORTAINER_AGENT_ARGS
