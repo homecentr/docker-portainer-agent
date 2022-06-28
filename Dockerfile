@@ -1,4 +1,4 @@
-FROM portainer/agent:2.6.3 as agent
+FROM portainer/agent:2.14.0 as agent
 
 FROM homecentr/base:3.2.0-alpine
 
